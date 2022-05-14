@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='/homestyle/style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+        {% if current_user.is_authenticated %}
+            <div id="entrada_user">
+                <h1 class="nome">{{current_user.name}}</h1><br>
+                <p>{{current_user.email}}</p><br>
+                <p>Esse texto aparece caso voce esteja logado</p><br>
+                <a class="botao"href="{{url_for('login')}}"><input class="botao"type="button" value="LOGOUT"></a>
+            </div>
+        {% else %}
+            <div id="entrada_user">
+                <p>Caso voce nao esteja logado</p>
+            </div>
+        {% endif %}
+        <script src="{{url_for('static', filename='/scripts/homeScript.js')}}"></script>
+</body>
+</html>
